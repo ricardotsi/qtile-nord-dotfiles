@@ -67,6 +67,7 @@ keys = [
     #Start programs
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "b", lazy.spawn("firefox"), desc="Launch firefox"),
+    Key([mod], "p", lazy.spawn("firefox --private-window"), desc="Launch firefox"),
     Key([mod], "e", lazy.spawn("fish -c 'set -e COLUMNS ; set -e LINES; alacritty -e ranger'"), desc="Launch file manager"),
     Key([], "Print", lazy.spawn("fish -c 'maim ~/Pictures/Screenshot/(date +%s).png'"), desc="Print fullscreen"),
     Key([mod], "Print", lazy.spawn("fish -c 'maim -i (xdotool getactivewindow) ~/Pictures/Screenshot/(date +%s).png'"), desc="Print fullscreen"),
@@ -86,7 +87,14 @@ keys = [
         desc="Spawn a command using a prompt widget"),
 ]
 
-groups = [Group(i) for i in "12345"]
+#groupsd = [Group(i) for i in "1"]
+
+groups = [
+    Group("1", matches=[Match(wm_class=["Alacritty"])], spawn="alacritty", label=""),
+    Group("2", matches=[Match(wm_class=["firefox"])], spawn="firefox -P default-release", exclusive=True, layout="max", label=""),
+    Group("3", matches=[Match(wm_class=["libreoffice"])], exclusive=True, label=""),
+]
+
 
 for i in groups:
     keys.extend([
@@ -104,7 +112,6 @@ for i in groups:
     ])
 
 # Colors (Nord)
-   # Default colors
 background = '#2E3440'
 foreground = '#D8DEE9'
 bg = '#4c566a60'
@@ -147,14 +154,14 @@ layouts = [
     layout.MonadWide(**layout_theme),
     layout.Max(**layout_theme),
     # Try more layouts iby unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+   # layout.Stack(num_stacks=2),
+   # layout.Bsp(),
+   # layout.Matrix(),
+   # layout.RatioTile(),
+   # layout.Tile(),
+   # layout.TreeTab(),
+   # layout.VerticalTile(),
+   # layout.Zoomy(),
 ]
 
 widget_defaults = dict(
@@ -192,6 +199,7 @@ screens = [
                     disable_drag=True,
                     highlight_method="line",
                     highlight_color=[normal["blue"], normal["blue"]],
+                    fontsize=25,
                 ),
                 widget.TextBox(
                     foreground=bg,
@@ -202,91 +210,6 @@ screens = [
                 widget.Spacer(
                     length=bar.STRETCH,
                 ),
-
-
-#                #Middle Bar
-#                widget.TextBox(
-#                    text="\ue0b6\u2588",
-#                    fontsize=30,
-#                    foreground="#4c566a60",
-#                    padding=0,
-#                ),
-#                widget.TextBox(
-#                    text="\ue0b8",
-#                    fontsize=30,
-#                    foreground="#4c566a66",
-#                    background=foreground+"30",
-#                    padding=0,
-#                ),
-#                widget.CheckUpdates(
-#                    background=foreground+"30",
-#                    colour_have_updates=background,
-#                    colour_no_updates=background,
-#                    no_update_string="Updated!",
-#                ),
-#                widget.TextBox(
-#                    text="\ue0ba\u2588\ue0bc",
-#                    fontsize=30,
-#                    foreground="#4c566a66",
-#                    background=foreground+"30",
-#                    padding=0,
-#                ),
-#                widget.TextBox(
-#                    text="CPU",
-#                    foreground=background,
-#                    background=foreground+"30",
-#                ),
-#                widget.CPUGraph(
-#                    background=foreground+"30",
-#                ),
-#                widget.TextBox(
-#                    text="\ue0be\u2588\ue0b8",
-#                    fontsize=30,
-#                    foreground="#4c566a66",
-#                    background=foreground+"30",
-#                    padding=0,
-#                ),
-#                widget.TextBox(
-#                    text="Memory",
-#                    foreground=background,
-#                    background=foreground+"30",
-#                ),
-#                widget.MemoryGraph(
-#                    background=foreground+"30",
-#                ),
-#                widget.TextBox(
-#                    text="\ue0ba\u2588\ue0bc",
-#                    fontsize=30,
-#                    foreground="#4c566a66",
-#                    background=foreground+"30",
-#                    padding=0,
-#                ),
-#                widget.TextBox(
-#                    text="Vol:",
-#                    background=foreground+"30",
-#                    foreground=background,
-#                ),
-#                widget.PulseVolume(
-#                    background=foreground+"30",
-#                    foreground=background,
-#                ),
-#                widget.Systray(
-#                    background=foreground+"30",
-#                    icon_size=30,
-#                ),
-#                widget.TextBox(
-#                    text="\ue0be",
-#                    fontsize=30,
-#                    foreground="#4c566a66",
-#                    background=foreground+"30",
-#                    padding=0,
-#                ),
-#                widget.TextBox(
-#                    text="\u2588\ue0b4",
-#                    fontsize=30,
-#                    foreground="#4c566a66",
-#                    padding=0,
-#                ),
 
                 #Middle Bar
                 widget.TextBox(
@@ -389,7 +312,7 @@ mouse = [
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
 follow_mouse_focus = True
-bring_front_click = False
+bring_front_click = True
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
