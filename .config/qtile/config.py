@@ -80,7 +80,8 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "shift"], "r", lazy.spawn("reboot"), desc="Restart"),
-    Key([mod, "control"], "q", lazy.spawn("poweroff"), desc="Shutdown Qtile"),
+    Key([mod, "shift"], "q", lazy.spawn("poweroff"), desc="Shutdown Qtile"),
+    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawn("rofi -show drun -font 'hack 14' -icon-theme 'Papirus' -show-icons"),
         desc="Spawn a command using a prompt widget"),
 ]
