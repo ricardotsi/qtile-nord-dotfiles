@@ -67,14 +67,16 @@ keys = [
     #Start programs
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "b", lazy.spawn("firefox"), desc="Launch firefox"),
-    #Key([mod], "e", lazy.spawn(terminal+" -e sleep 0.1 ; ranger"), desc="Launch file manager"),
     Key([mod], "e", lazy.spawn("fish -c 'set -e COLUMNS ; set -e LINES; alacritty -e ranger'"), desc="Launch file manager"),
+    Key([], "Print", lazy.spawn("fish -c 'maim ~/Pictures/Screenshot/(date +%s).png'"), desc="Print fullscreen"),
+    Key([mod], "Print", lazy.spawn("fish -c 'maim -i (xdotool getactivewindow) ~/Pictures/Screenshot/(date +%s).png'"), desc="Print fullscreen"),
+    Key(["control"], "Print", lazy.spawn("fish -c 'maim | feh - -x & maim -s (date +%s).png'"), desc="Print fullscreen"),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod], "m", lazy.window.toggle_fullscreen(), desc="Toogle Fullscreen"),
-    Key([mod, "control"], "m", lazy.layout.toggle_split(), desc="Toogle Fullscreen"),
+#    Key([mod], "m", lazy.window.toggle_fullscreen(), desc="Toogle Fullscreen"),
+    Key([mod], "m", lazy.layout.toggle_split(), desc="Toogle Fullscreen"),
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "shift"], "r", lazy.spawn("reboot"), desc="Restart"),
@@ -368,10 +370,10 @@ screens = [
                 ),
             ],
             30,
-            margin=[9,10,5,10],
+            margin=[9,10,0,10],
             background="00000000",
         ),
-        wallpaper="~/Downloads/wp.jpg",
+        wallpaper="~/Pictures/wp.jpg",
         wallpaper_mode="stretch",
     ),
 ]
