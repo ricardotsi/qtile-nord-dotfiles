@@ -32,6 +32,13 @@ colors:
        #    text: "0x1E1E3F"
        #    cursor: "0xFAD000"
 
+shell:
+  program: /bin/fish
+  args:
+    - -l
+    - -c
+    - "byobu"
+
   # Nore: "0x2D2B55"
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
