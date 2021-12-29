@@ -2,6 +2,7 @@ alacritty
 autoconf
 automake
 base
+bashtop
 bison
 byobu
 fakeroot
@@ -39,6 +40,7 @@ sudo
 texinfo
 tmux
 ttf-dejavu
+ttf-font-awesome
 udiskie
 udisks2
 ueberzug
