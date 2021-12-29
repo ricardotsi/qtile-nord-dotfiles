@@ -3,4 +3,3 @@ if status is-login
 	exec startx
     end
 end
-status --is-login; and status --is-interactive; and exec byobu-launcher
