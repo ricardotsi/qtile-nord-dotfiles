@@ -71,6 +71,7 @@ keys = [
     Key([mod], "p", lazy.spawn("firefox --private-window"), desc="Launch firefox"),
     Key([mod], "e", lazy.spawn("fish -c 'set -e COLUMNS ; set -e LINES; alacritty -e ranger'"), desc="Launch file manager"),
     Key([mod], "t", lazy.spawn("alacritty -e htop"), desc="Launch file manager"),
+    Key([mod], "v", lazy.spawn("vncviewer"), desc="Launch file manager"),
     Key([mod, "control"], "Return", lazy.spawn("alacritty -e byobu"), desc="Launch file manager"),
     Key([], "Print", lazy.spawn("fish -c 'maim ~/Pictures/Screenshot/(date +%s).png'"), desc="Print fullscreen"),
     Key([mod], "Print", lazy.spawn("fish -c 'maim -i (xdotool getactivewindow) ~/Pictures/Screenshot/(date +%s).png'"), desc="Print fullscreen"),
@@ -96,7 +97,8 @@ groups = [
     Group("1", matches=[Match(wm_class=["Alacritty"])], spawn="alacritty", label=""),
     Group("2", matches=[Match(wm_class=["firefox"])], spawn="firefox -P default-release", exclusive=True, layout="max", label=""),
     Group("3", matches=[Match(wm_class=["libreoffice"])], exclusive=True, label=""),
-    Group("4", label=""),
+    Group("4", matches=[Match(wm_class=["vncviewer"])], exclusive=True, label=""),
+    Group("5", label=""),
 ]
 
 
