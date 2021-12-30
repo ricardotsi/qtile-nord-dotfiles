@@ -258,8 +258,10 @@ screens = [
                     padding=10,
                 ),
                 widget.TextBox(
-                    text="Vol:",
+                    text="",
                     background=bg,
+                    padding=0,
+                    fontsize=25,
                 ),
                 widget.PulseVolume(
                     background=bg,
