@@ -222,17 +222,6 @@ screens = [
                     foreground=bg,
                     padding=0,
                 ),
-                widget.CheckUpdates(
-                    background=bg,
-                    colour_have_updates=fg,
-                    colour_no_updates=fg,
-                    no_update_string="Updated!",
-                ),
-                widget.Sep(
-                    background=bg,
-                    foreground=fg,
-                    padding=10,
-                ),
                 widget.TextBox(
                     text="CPU",
                     background=bg,
