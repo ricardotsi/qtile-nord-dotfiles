@@ -30,3 +30,4 @@ Pictures
 .config/yay
 .config/qtile/_*
 !.gitignore
+.fltk
