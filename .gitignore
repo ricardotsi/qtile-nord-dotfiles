@@ -31,3 +31,4 @@ Pictures
 .config/qtile/_*
 !.gitignore
 .fltk
+.vnc
