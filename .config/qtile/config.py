@@ -32,6 +32,7 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 mod = "mod4"
+mod1 = "mod1"
 terminal = guess_terminal()
 
 keys = [
@@ -40,8 +41,8 @@ keys = [
     Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "Up", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(),
-        desc="Move window focus to other window"),
+    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+    Key([mod1], "Tab", lazy.layout.next(), desc="Move window focus to other window"),
 
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -69,7 +70,8 @@ keys = [
     Key([mod], "b", lazy.spawn("firefox"), desc="Launch firefox"),
     Key([mod], "p", lazy.spawn("firefox --private-window"), desc="Launch firefox"),
     Key([mod], "e", lazy.spawn("fish -c 'set -e COLUMNS ; set -e LINES; alacritty -e ranger'"), desc="Launch file manager"),
-    Key([mod], "t", lazy.spawn("alacritty -e bashtop"), desc="Launch file manager"),
+    Key([mod], "t", lazy.spawn("alacritty -e htop"), desc="Launch file manager"),
+    Key([mod, "control"], "Return", lazy.spawn("alacritty -e byobu"), desc="Launch file manager"),
     Key([], "Print", lazy.spawn("fish -c 'maim ~/Pictures/Screenshot/(date +%s).png'"), desc="Print fullscreen"),
     Key([mod], "Print", lazy.spawn("fish -c 'maim -i (xdotool getactivewindow) ~/Pictures/Screenshot/(date +%s).png'"), desc="Print fullscreen"),
     Key(["control"], "Print", lazy.spawn("fish -c 'maim | feh - -x & maim -s (date +%s).png'"), desc="Print fullscreen"),
