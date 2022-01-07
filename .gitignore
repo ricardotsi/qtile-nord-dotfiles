@@ -32,3 +32,4 @@ Pictures
 !.gitignore
 .fltk
 .vnc
+.config/llpp.conf
