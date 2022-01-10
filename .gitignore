@@ -4,6 +4,7 @@
 .git
 .gnupg
 .local
+!.local/share/konsole
 .mozilla
 .ssh
 Documents
